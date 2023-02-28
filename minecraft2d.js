@@ -24,7 +24,6 @@ const LAKE_CHANCE = 0.01;
 const LAKE_SIZE_MIN = 3;
 const LAKE_SIZE_MAX = 7;
 const LAKE_SMOOTHING = 0.6;
-const TREE_CHANCE = 0.05;
 
 // Génération du monde aléatoire
 const world = [];
@@ -33,20 +32,6 @@ for (let x = 0; x < WIDTH / BLOCK_SIZE; x++) {
   for (let y = 0; y < HEIGHT / BLOCK_SIZE; y++) {
     // Couleur verte pour chaque bloc
     world[x][y] = GRASS_COLOR;
-    
-    // Génération des arbres
-    if (Math.random() < TREE_CHANCE && world[x][y] === GRASS_COLOR) {
-      const treeSize = Math.floor(Math.random() * 3) + 3;
-      const treeX = x - Math.floor(treeSize / 2);
-      const treeY = y - treeSize + 1;
-      for (let i = treeX; i < treeX + treeSize; i++) {
-        for (let j = treeY; j <= y; j++) {
-          if (i >= 0 && i < WIDTH / BLOCK_SIZE && j >= 0 && j < HEIGHT / BLOCK_SIZE) {
-            world[i][j] = "#8B4513";
-          }
-        }
-      }
-    }
   }
 }
 
@@ -120,7 +105,7 @@ window.addEventListener("keydown", (event) => {
   }
   break;
   case "ArrowRight":
-  if (playerX < WIDTH / BLOCK_SIZE - 1 && world[playerX + 1][playerY] !== "#C4E8E5") {
+  if (playerX < WIDTH / BLOCK_SIZE - 1 && world[playerX + 1][playerY] !== "#ADD8E6") {
   playerX += 1;
   }
       break;
